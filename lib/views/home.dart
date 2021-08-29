@@ -1,17 +1,16 @@
-import 'package:app/controllers/main.dart';
+import 'package:app/controllers/home.dart';
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 import 'package:global_configuration/global_configuration.dart';
-import '../components/utils.dart';
 
 class HomeView extends StatelessWidget {
-  final _mainController = GetIt.I.get<MainController>();
+  final _homeController = GetIt.I.get<HomeController>();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text('Home')),
-      key: _mainController.skaffoldKey,
+      key: _homeController.skaffoldKey,
       body: Container(
         decoration: BoxDecoration(
           color:

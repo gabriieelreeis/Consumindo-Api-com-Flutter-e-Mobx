@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:mobx/mobx.dart';
-part 'main.g.dart';
+part 'home.g.dart';
 
-class MainController = _MainControllerBase with _$MainController;
+class HomeController = _HomeControllerBase with _$HomeController;
 
-abstract class _MainControllerBase with Store {
+abstract class _HomeControllerBase with Store {
+  final navigatorKey = GlobalKey<NavigatorState>();
+
   @observable
   bool allLoaded = false;
 
