@@ -9,7 +9,7 @@ class SplashScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Future.delayed(const Duration(seconds: 3), () {
-      _homeController.navigatorKey.currentState?.pushReplacementNamed('/Home');
+      Navigator.of(context).pushReplacementNamed('/Home');
     });
 
     return Scaffold(
@@ -29,16 +29,15 @@ class SplashScreen extends StatelessWidget {
                 width: 150,
                 fit: BoxFit.cover,
               ),
-              SizedBox(height: 50),
-              // DESCONMENTAR NA VERSAO FINAL
-              // DANDO LAG NO MAC
-
-              // CircularProgressIndicator(
-              //   backgroundColor: Color(
-              //       int.parse(GlobalConfiguration().getString('primaryColor'))),
-              //   valueColor: AlwaysStoppedAnimation<Color>(Color(
-              //       int.parse(GlobalConfiguration().getString('secondColor')))),
-              // ),
+              SizedBox(
+                height: 40,
+              ),
+              CircularProgressIndicator(
+                backgroundColor: Color(
+                    int.parse(GlobalConfiguration().getString('primaryColor'))),
+                valueColor: AlwaysStoppedAnimation<Color>(Color(
+                    int.parse(GlobalConfiguration().getString('secondColor')))),
+              ),
             ],
           ),
         ),
