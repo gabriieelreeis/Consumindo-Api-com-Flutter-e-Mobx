@@ -10,6 +10,8 @@ class HomeView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor:
+            Color(int.parse(GlobalConfiguration().getString('secondColor'))),
         title: const Text('Home'),
         actions: [
           Container(
@@ -17,8 +19,9 @@ class HomeView extends StatelessWidget {
             child: PopupMenuButton(
               icon: CircleAvatar(
                 backgroundImage: NetworkImage(
-                    "https://4.bp.blogspot.com/-Jx21kNqFSTU/UXemtqPhZCI/AAAAAAAAh74/BMGSzpU6F48/s1600/funny-cat-pictures-047-001.jpg"),
-                backgroundColor: Colors.red,
+                    "https://s2.glbimg.com/Vp3G23xF7uR9AoK3Z8uCz9QMi1c=/e.glbimg.com/og/ed/f/original/2019/12/10/yoda-advice-featured-1.jpg"),
+                backgroundColor: Color(
+                    int.parse(GlobalConfiguration().getString('primaryColor'))),
               ),
               itemBuilder: (BuildContext context) {
                 return [

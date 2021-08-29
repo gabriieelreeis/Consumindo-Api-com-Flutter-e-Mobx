@@ -15,8 +15,7 @@ class SplashScreen extends StatelessWidget {
     return Scaffold(
       body: Container(
         decoration: BoxDecoration(
-          color:
-              Color(int.parse(GlobalConfiguration().getString('secondColor'))),
+          color: Color(int.parse(GlobalConfiguration().get('primaryColor'))),
         ),
         child: Center(
           child: Column(
@@ -25,18 +24,9 @@ class SplashScreen extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               Image.asset(
-                'assets/images/logo.png',
+                'assets/images/bb-8.gif',
                 width: 150,
                 fit: BoxFit.cover,
-              ),
-              SizedBox(
-                height: 40,
-              ),
-              CircularProgressIndicator(
-                backgroundColor: Color(
-                    int.parse(GlobalConfiguration().getString('primaryColor'))),
-                valueColor: AlwaysStoppedAnimation<Color>(Color(
-                    int.parse(GlobalConfiguration().getString('secondColor')))),
               ),
             ],
           ),
