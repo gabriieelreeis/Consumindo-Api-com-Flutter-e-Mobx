@@ -5,7 +5,7 @@ import 'package:app/views/splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 import 'package:global_configuration/global_configuration.dart';
-import 'configs/app_configs.dart';
+import 'components/app_configs.dart';
 
 void main() async {
   GetIt getIt = GetIt.I;

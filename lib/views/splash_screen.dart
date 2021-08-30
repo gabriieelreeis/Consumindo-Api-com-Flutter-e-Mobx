@@ -15,7 +15,7 @@ class SplashScreen extends StatelessWidget {
     return Scaffold(
       body: Container(
         decoration: BoxDecoration(
-          color: Color(int.parse(GlobalConfiguration().get('primaryColor'))),
+          color: Colors.white,
         ),
         child: Center(
           child: Column(
