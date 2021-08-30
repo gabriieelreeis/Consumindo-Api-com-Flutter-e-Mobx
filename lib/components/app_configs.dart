@@ -1,4 +1,7 @@
-final Map<String, String> appConfigs = {
-  "primaryColor": "0xAAF2B33D",
-  "secondColor": "0xAA0D0D0D"
+import 'package:flutter/material.dart';
+
+final Map<String, dynamic> appConfigs = {
+  "primaryColor": Color.fromRGBO(219, 169, 13, 1),
+  "secondColor": Color.fromRGBO(33, 33, 33, 1),
+  "splashBg": Colors.white
 };
