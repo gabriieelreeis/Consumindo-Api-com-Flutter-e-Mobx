@@ -4,11 +4,16 @@ import 'package:global_configuration/global_configuration.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
 class WebViewPage extends StatelessWidget {
+  WebViewPage(this.title, this.url);
+
+  final String title;
+  final String url;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Site Oficial'),
+        title: Text(title),
         backgroundColor: GlobalConfiguration().get('secondColor'),
         actions: [
           GestureDetector(
@@ -26,7 +31,7 @@ class WebViewPage extends StatelessWidget {
       body: Stack(
         children: <Widget>[
           WebView(
-            initialUrl: 'https://www.starwars.com/community',
+            initialUrl: url,
           ),
         ],
       ),

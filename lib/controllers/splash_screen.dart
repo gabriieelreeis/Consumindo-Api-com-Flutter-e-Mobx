@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:mobx/mobx.dart';
 part 'splash_screen.g.dart';
 

@@ -28,16 +28,14 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       navigatorKey: _homeController.navigatorKey,
       title: 'Star Wars',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
       debugShowCheckedModeBanner: false,
       initialRoute: '/Splash',
       routes: {
         '/Splash': (context) => SplashScreen(),
         '/Home': (context) => HomeView(),
         '/Perfil': (context) => PerfilView(),
-        '/WebView': (context) => WebViewPage()
+        '/Site': (context) =>
+            WebViewPage('Site Oficial', 'https://www.starwars.com/community'),
       },
     );
   }

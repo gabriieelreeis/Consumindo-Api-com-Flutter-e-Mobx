@@ -1,3 +1,4 @@
+import 'package:app/utils/personagens.dart';
 import 'package:flutter/material.dart';
 import 'package:mobx/mobx.dart';
 part 'home.g.dart';
@@ -16,5 +17,14 @@ abstract class _HomeControllerBase with Store {
   @action
   changeTab(int i) {
     selectedTab = i;
+  }
+
+  final Personagens personagens = Personagens();
+
+  @observable
+  List<dynamic> listPersonagens = [];
+  @action
+  Future importaPersonagens() async {
+    listPersonagens = await personagens.importarPersonagens();
   }
 }

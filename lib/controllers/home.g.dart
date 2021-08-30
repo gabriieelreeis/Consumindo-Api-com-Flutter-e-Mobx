@@ -39,6 +39,31 @@ mixin _$HomeController on _HomeControllerBase, Store {
     });
   }
 
+  final _$listPersonagensAtom =
+      Atom(name: '_HomeControllerBase.listPersonagens');
+
+  @override
+  List<dynamic> get listPersonagens {
+    _$listPersonagensAtom.reportRead();
+    return super.listPersonagens;
+  }
+
+  @override
+  set listPersonagens(List<dynamic> value) {
+    _$listPersonagensAtom.reportWrite(value, super.listPersonagens, () {
+      super.listPersonagens = value;
+    });
+  }
+
+  final _$importaPersonagensAsyncAction =
+      AsyncAction('_HomeControllerBase.importaPersonagens');
+
+  @override
+  Future<dynamic> importaPersonagens() {
+    return _$importaPersonagensAsyncAction
+        .run(() => super.importaPersonagens());
+  }
+
   final _$_HomeControllerBaseActionController =
       ActionController(name: '_HomeControllerBase');
 
@@ -57,7 +82,8 @@ mixin _$HomeController on _HomeControllerBase, Store {
   String toString() {
     return '''
 selectedTab: ${selectedTab},
-skaffoldKey: ${skaffoldKey}
+skaffoldKey: ${skaffoldKey},
+listPersonagens: ${listPersonagens}
     ''';
   }
 }

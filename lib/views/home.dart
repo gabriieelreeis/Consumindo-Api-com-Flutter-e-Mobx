@@ -23,8 +23,6 @@ class _HomeViewState extends State<HomeView> with TickerProviderStateMixin {
     new Tabs(title: "Favoritos")
   ];
 
-  // Informo que o _controller nao é nullo
-  // e só sera iniciado após declarado um valor
   late TabController _controller;
 
   @override
@@ -49,7 +47,7 @@ class _HomeViewState extends State<HomeView> with TickerProviderStateMixin {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
               GestureDetector(
-                onTap: () => Navigator.of(context).pushNamed('/WebView'),
+                onTap: () => Navigator.of(context).pushNamed('/Site'),
                 child: Container(
                   decoration: BoxDecoration(
                       color: GlobalConfiguration().get('primaryColor'),
