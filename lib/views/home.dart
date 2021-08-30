@@ -20,9 +20,11 @@ class _HomeViewState extends State<HomeView> with TickerProviderStateMixin {
   final List _tabs = [
     new Tabs(title: "Personagens"),
     new Tabs(title: "Filmes"),
-    new Tabs(title: "Favoritor")
+    new Tabs(title: "Favoritos")
   ];
 
+  // Informo que o _controller nao é nullo
+  // e só sera iniciado após declarado um valor
   late TabController _controller;
 
   @override
@@ -30,34 +32,66 @@ class _HomeViewState extends State<HomeView> with TickerProviderStateMixin {
     super.initState();
 
     _controller = new TabController(length: 3, vsync: this);
+    _controller.addListener(_changeTab);
+  }
+
+  _changeTab() {
+    _homeController.changeTab(_controller.index);
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(_tabs[_controller.index].title),
+        title: Observer(builder: (_) {
+          return Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: <Widget>[
+              GestureDetector(
+                onTap: () => Navigator.of(context).pushNamed('/WebView'),
+                child: Container(
+                  decoration: BoxDecoration(
+                      color: GlobalConfiguration().get('primaryColor'),
+                      borderRadius: BorderRadius.all(Radius.circular(5))),
+                  child: Padding(
+                    padding: EdgeInsets.all(5),
+                    child: Text(
+                      'Site Oficial',
+                      style: TextStyle(
+                        fontSize: 12,
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+              Expanded(
+                child: Center(
+                  child: Text(
+                    _tabs[_homeController.selectedTab].title,
+                  ),
+                ),
+              ),
+            ],
+          );
+        }),
         backgroundColor: GlobalConfiguration().get('secondColor'),
         actions: [
-          Container(
-            width: 58,
-            child: PopupMenuButton(
-              icon: FluttermojiCircleAvatar(
+          GestureDetector(
+            onTap: () => Navigator.of(context).pushNamed('/Perfil'),
+            child: Container(
+              width: 58,
+              child: FluttermojiCircleAvatar(
                 backgroundColor: Colors.grey[200],
                 radius: 100,
               ),
-              itemBuilder: (BuildContext context) {
-                return [
-                  PopupMenuItem<String>(
-                    value: '1',
-                    child: Text('1'),
-                  ),
-                ];
-              },
             ),
-          )
+          ),
         ],
         bottom: TabBar(
+          indicatorColor: GlobalConfiguration().get('primaryColor'),
+          labelColor: GlobalConfiguration().get('primaryColor'),
+          unselectedLabelColor: Colors.white,
           controller: _controller,
           tabs: <Widget>[
             Tab(icon: Text(_tabs[0].title)),
@@ -71,17 +105,16 @@ class _HomeViewState extends State<HomeView> with TickerProviderStateMixin {
         decoration: BoxDecoration(
           color: GlobalConfiguration().get('secondColor'),
         ),
-        child: Observer(builder: (_) {
-          return Center(
-            child: TabBarView(
-              children: [
-                new PleapleWidget(),
-                new FilmsWidget(),
-                new FavoritesWidget()
-              ],
-            ),
-          );
-        }),
+        child: Center(
+          child: TabBarView(
+            controller: _controller,
+            children: [
+              new PleapleWidget(),
+              new FilmsWidget(),
+              new FavoritesWidget()
+            ],
+          ),
+        ),
       ),
     );
   }

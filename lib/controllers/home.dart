@@ -12,4 +12,9 @@ abstract class _HomeControllerBase with Store {
 
   @observable
   GlobalKey<ScaffoldState> skaffoldKey = new GlobalKey<ScaffoldState>();
+
+  @action
+  changeTab(int i) {
+    selectedTab = i;
+  }
 }

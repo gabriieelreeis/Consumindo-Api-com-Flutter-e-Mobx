@@ -39,6 +39,20 @@ mixin _$HomeController on _HomeControllerBase, Store {
     });
   }
 
+  final _$_HomeControllerBaseActionController =
+      ActionController(name: '_HomeControllerBase');
+
+  @override
+  dynamic changeTab(int i) {
+    final _$actionInfo = _$_HomeControllerBaseActionController.startAction(
+        name: '_HomeControllerBase.changeTab');
+    try {
+      return super.changeTab(i);
+    } finally {
+      _$_HomeControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
   @override
   String toString() {
     return '''
