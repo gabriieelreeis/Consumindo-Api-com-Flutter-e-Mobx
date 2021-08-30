@@ -24,21 +24,6 @@ mixin _$HomeController on _HomeControllerBase, Store {
     });
   }
 
-  final _$allLoadedAtom = Atom(name: '_HomeControllerBase.allLoaded');
-
-  @override
-  bool get allLoaded {
-    _$allLoadedAtom.reportRead();
-    return super.allLoaded;
-  }
-
-  @override
-  set allLoaded(bool value) {
-    _$allLoadedAtom.reportWrite(value, super.allLoaded, () {
-      super.allLoaded = value;
-    });
-  }
-
   final _$skaffoldKeyAtom = Atom(name: '_HomeControllerBase.skaffoldKey');
 
   @override
@@ -54,25 +39,10 @@ mixin _$HomeController on _HomeControllerBase, Store {
     });
   }
 
-  final _$_HomeControllerBaseActionController =
-      ActionController(name: '_HomeControllerBase');
-
-  @override
-  void changeTab(int i) {
-    final _$actionInfo = _$_HomeControllerBaseActionController.startAction(
-        name: '_HomeControllerBase.changeTab');
-    try {
-      return super.changeTab(i);
-    } finally {
-      _$_HomeControllerBaseActionController.endAction(_$actionInfo);
-    }
-  }
-
   @override
   String toString() {
     return '''
 selectedTab: ${selectedTab},
-allLoaded: ${allLoaded},
 skaffoldKey: ${skaffoldKey}
     ''';
   }

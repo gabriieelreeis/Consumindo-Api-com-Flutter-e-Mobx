@@ -11,13 +11,5 @@ abstract class _HomeControllerBase with Store {
   int selectedTab = 0;
 
   @observable
-  bool allLoaded = false;
-
-  @observable
   GlobalKey<ScaffoldState> skaffoldKey = new GlobalKey<ScaffoldState>();
-
-  @action
-  void changeTab(int i) {
-    selectedTab = i;
-  }
 }
