@@ -3,41 +3,40 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:get_it/get_it.dart';
 
-class FilmsWidget extends StatefulWidget {
-  @override
-  _FilmsWidgetState createState() => _FilmsWidgetState();
-}
-
-class _FilmsWidgetState extends State<FilmsWidget> {
+class FilmsWidget extends StatelessWidget {
   final _homeController = GetIt.I.get<HomeController>();
-
-  @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-
-    _homeController.importaPersonagens();
-  }
 
   @override
   Widget build(BuildContext context) {
     return Observer(builder: (_) {
-      return ListView.builder(
-        itemCount: _homeController.listPersonagens.length == 0
-            ? 0
-            : _homeController.listPersonagens.length,
-        itemBuilder: (BuildContext context, int index) {
-          if (_homeController.listPersonagens != null) {
-            return new Card(
-              child: new Text(_homeController.listPersonagens[index]["name"]),
-            );
-          }
-          return Center(
-            child: CircularProgressIndicator(
-              backgroundColor: Colors.cyanAccent,
-            ),
-          );
-        },
+      return SingleChildScrollView(
+        child: Padding(
+          padding: EdgeInsets.all(20),
+          child: Column(
+            children: [
+              ListView.builder(
+                physics: NeverScrollableScrollPhysics(),
+                shrinkWrap: true,
+                itemCount: _homeController.listFilmes.length == 0
+                    ? 0
+                    : _homeController.listFilmes.length,
+                itemBuilder: (BuildContext context, int index) {
+                  if (_homeController.listFilmes.length > 0) {
+                    return new Card(
+                      child:
+                          new Text(_homeController.listFilmes[index]["title"]),
+                    );
+                  }
+                  return Center(
+                    child: CircularProgressIndicator(
+                      backgroundColor: Colors.cyanAccent,
+                    ),
+                  );
+                },
+              ),
+            ],
+          ),
+        ),
       );
     });
   }

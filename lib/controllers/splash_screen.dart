@@ -7,4 +7,9 @@ class SplashScreenController = _SplashScreenControllerBase
 abstract class _SplashScreenControllerBase with Store {
   @observable
   bool allLoaded = false;
+
+  @action
+  loaded() {
+    allLoaded = true;
+  }
 }

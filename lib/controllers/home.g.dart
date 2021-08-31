@@ -55,6 +55,21 @@ mixin _$HomeController on _HomeControllerBase, Store {
     });
   }
 
+  final _$listFilmesAtom = Atom(name: '_HomeControllerBase.listFilmes');
+
+  @override
+  List<dynamic> get listFilmes {
+    _$listFilmesAtom.reportRead();
+    return super.listFilmes;
+  }
+
+  @override
+  set listFilmes(List<dynamic> value) {
+    _$listFilmesAtom.reportWrite(value, super.listFilmes, () {
+      super.listFilmes = value;
+    });
+  }
+
   final _$importaPersonagensAsyncAction =
       AsyncAction('_HomeControllerBase.importaPersonagens');
 
@@ -62,6 +77,14 @@ mixin _$HomeController on _HomeControllerBase, Store {
   Future<dynamic> importaPersonagens() {
     return _$importaPersonagensAsyncAction
         .run(() => super.importaPersonagens());
+  }
+
+  final _$importaFilmesAsyncAction =
+      AsyncAction('_HomeControllerBase.importaFilmes');
+
+  @override
+  Future<dynamic> importaFilmes() {
+    return _$importaFilmesAsyncAction.run(() => super.importaFilmes());
   }
 
   final _$_HomeControllerBaseActionController =
@@ -83,7 +106,8 @@ mixin _$HomeController on _HomeControllerBase, Store {
     return '''
 selectedTab: ${selectedTab},
 skaffoldKey: ${skaffoldKey},
-listPersonagens: ${listPersonagens}
+listPersonagens: ${listPersonagens},
+listFilmes: ${listFilmes}
     ''';
   }
 }

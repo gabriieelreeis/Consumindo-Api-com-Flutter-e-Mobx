@@ -1,11 +1,14 @@
-import 'package:app/utils/personagens.dart';
+import 'package:app/controllers/splash_screen.dart';
+import 'package:app/utils/api.dart';
 import 'package:flutter/material.dart';
+import 'package:get_it/get_it.dart';
 import 'package:mobx/mobx.dart';
 part 'home.g.dart';
 
 class HomeController = _HomeControllerBase with _$HomeController;
 
 abstract class _HomeControllerBase with Store {
+  final _conSplash = GetIt.I.get<SplashScreenController>();
   final navigatorKey = GlobalKey<NavigatorState>();
 
   @observable
@@ -19,12 +22,21 @@ abstract class _HomeControllerBase with Store {
     selectedTab = i;
   }
 
-  final Personagens personagens = Personagens();
+  final ApiUtil api = ApiUtil();
 
   @observable
   List<dynamic> listPersonagens = [];
   @action
   Future importaPersonagens() async {
-    listPersonagens = await personagens.importarPersonagens();
+    listPersonagens = await api.importarPersonagens();
+    _conSplash.loaded();
+  }
+
+  @observable
+  List<dynamic> listFilmes = [];
+  @action
+  Future importaFilmes() async {
+    final List<dynamic> filmes = await api.importarFilmes();
+    listFilmes = filmes.reversed.toList();
   }
 }

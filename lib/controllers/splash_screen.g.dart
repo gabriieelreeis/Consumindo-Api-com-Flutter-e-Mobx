@@ -24,6 +24,20 @@ mixin _$SplashScreenController on _SplashScreenControllerBase, Store {
     });
   }
 
+  final _$_SplashScreenControllerBaseActionController =
+      ActionController(name: '_SplashScreenControllerBase');
+
+  @override
+  dynamic loaded() {
+    final _$actionInfo = _$_SplashScreenControllerBaseActionController
+        .startAction(name: '_SplashScreenControllerBase.loaded');
+    try {
+      return super.loaded();
+    } finally {
+      _$_SplashScreenControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
   @override
   String toString() {
     return '''
