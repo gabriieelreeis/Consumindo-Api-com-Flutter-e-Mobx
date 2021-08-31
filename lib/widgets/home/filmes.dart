@@ -1,4 +1,5 @@
 import 'package:app/controllers/home.dart';
+import 'package:app/widgets/home/card_default.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:get_it/get_it.dart';
@@ -22,10 +23,8 @@ class FilmsWidget extends StatelessWidget {
                     : _homeController.listFilmes.length,
                 itemBuilder: (BuildContext context, int index) {
                   if (_homeController.listFilmes.length > 0) {
-                    return new Card(
-                      child:
-                          new Text(_homeController.listFilmes[index]["title"]),
-                    );
+                    return DefaultCardWidget(
+                        _homeController.listFilmes[index]["title"]);
                   }
                   return Center(
                     child: CircularProgressIndicator(

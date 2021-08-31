@@ -1,6 +1,6 @@
 // @dart=2.9
 import 'package:app/controllers/home.dart';
-import 'package:app/controllers/splash_screen.dart';
+import 'package:app/controllers/perfil.dart';
 import 'package:app/views/home.dart';
 import 'package:app/views/perfil.dart';
 import 'package:app/views/splash_screen.dart';
@@ -13,7 +13,7 @@ import 'components/app_configs.dart';
 void main() async {
   GetIt getIt = GetIt.I;
   getIt.registerSingleton<HomeController>(HomeController());
-  getIt.registerSingleton<SplashScreenController>(SplashScreenController());
+  getIt.registerSingleton<PerfilController>(PerfilController());
 
   GlobalConfiguration().loadFromMap(appConfigs);
 

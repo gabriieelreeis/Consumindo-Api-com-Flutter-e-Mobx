@@ -1,12 +1,23 @@
-import 'package:app/controllers/home.dart';
+import 'package:app/controllers/perfil.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:fluttermoji/fluttermoji.dart';
 import 'package:get_it/get_it.dart';
 import 'package:global_configuration/global_configuration.dart';
 
-class PerfilView extends StatelessWidget {
-  final _homeController = GetIt.I.get<HomeController>();
+class PerfilView extends StatefulWidget {
+  @override
+  _PerfilViewState createState() => _PerfilViewState();
+}
+
+class _PerfilViewState extends State<PerfilView> {
+  final _perfilController = GetIt.I.get<PerfilController>();
+
+  @override
+  void initState() {
+    super.initState();
+
+    _perfilController.updateAvatar();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -29,10 +40,24 @@ class PerfilView extends StatelessWidget {
       ),
       body: Container(
         decoration: BoxDecoration(
-          color: GlobalConfiguration().get('secondColor'),
+          color: Colors.white,
         ),
         child: Center(
-          child: Text('ói'),
+          child: Column(
+            children: [
+              Container(
+                margin: EdgeInsets.only(top: 20, bottom: 20),
+                width: MediaQuery.of(context).size.width - 50,
+                child: FluttermojiCircleAvatar(
+                  backgroundColor: Colors.grey[200],
+                  radius: 100,
+                ),
+              ),
+              FluttermojiCustomizer(
+                outerTitleText: 'Customizar:',
+              ),
+            ],
+          ),
         ),
       ),
     );

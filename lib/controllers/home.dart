@@ -1,15 +1,15 @@
-import 'package:app/controllers/splash_screen.dart';
 import 'package:app/utils/api.dart';
 import 'package:flutter/material.dart';
-import 'package:get_it/get_it.dart';
 import 'package:mobx/mobx.dart';
 part 'home.g.dart';
 
 class HomeController = _HomeControllerBase with _$HomeController;
 
 abstract class _HomeControllerBase with Store {
-  final _conSplash = GetIt.I.get<SplashScreenController>();
   final navigatorKey = GlobalKey<NavigatorState>();
+
+  @observable
+  bool allLoaded = false;
 
   @observable
   int selectedTab = 0;
@@ -29,7 +29,7 @@ abstract class _HomeControllerBase with Store {
   @action
   Future importaPersonagens() async {
     listPersonagens = await api.importarPersonagens();
-    _conSplash.loaded();
+    allLoaded = true;
   }
 
   @observable

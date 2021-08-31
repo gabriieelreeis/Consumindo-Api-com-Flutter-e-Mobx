@@ -1,3 +1,4 @@
+import 'package:app/widgets/home/card_default.dart';
 import 'package:flutter/material.dart';
 
 class ListaPersonagensWidget extends StatelessWidget {
@@ -12,9 +13,7 @@ class ListaPersonagensWidget extends StatelessWidget {
       itemCount: list.length == 0 ? 0 : list.length,
       itemBuilder: (BuildContext context, int index) {
         if (list != null) {
-          return new Card(
-            child: new Text(list[index]["name"]),
-          );
+          return DefaultCardWidget(list[index]["name"]);
         }
         return Container();
       },
