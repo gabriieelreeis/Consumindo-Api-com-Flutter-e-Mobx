@@ -58,6 +58,7 @@ class _HomeViewState extends State<HomeView> with TickerProviderStateMixin {
                       'Site Oficial',
                       style: TextStyle(
                         fontSize: 12,
+                        color: GlobalConfiguration().get('secondColor'),
                       ),
                     ),
                   ),
