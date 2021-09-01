@@ -1,11 +1,12 @@
-import 'package:app/controllers/home.dart';
-import 'package:app/widgets/home/card_default.dart';
+import 'package:app/app/pages/home/components/card_default.dart';
+import 'package:app/app/pages/home/controllers/home.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:get_it/get_it.dart';
 
-class FilmsWidget extends StatelessWidget {
+class FavoritesWidget extends StatelessWidget {
   final _homeController = GetIt.I.get<HomeController>();
+  String title = 'Favoritos';
 
   @override
   Widget build(BuildContext context) {
@@ -18,13 +19,13 @@ class FilmsWidget extends StatelessWidget {
               ListView.builder(
                 physics: NeverScrollableScrollPhysics(),
                 shrinkWrap: true,
-                itemCount: _homeController.listFilmes.length == 0
+                itemCount: _homeController.listFavoritos.length == 0
                     ? 0
-                    : _homeController.listFilmes.length,
+                    : _homeController.listFavoritos.length,
                 itemBuilder: (BuildContext context, int index) {
-                  if (_homeController.listFilmes.length > 0) {
+                  if (_homeController.listFavoritos.length > 0) {
                     return DefaultCardWidget(
-                        _homeController.listFilmes[index]["title"]);
+                        item: _homeController.listFavoritos[index]);
                   }
                   return Center(
                     child: CircularProgressIndicator(

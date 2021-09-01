@@ -1,5 +1,5 @@
-import 'package:app/controllers/home.dart';
-import 'package:app/widgets/home/personagens_lista.dart';
+import 'package:app/app/pages/home/components/card_default.dart';
+import 'package:app/app/pages/home/controllers/home.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:get_it/get_it.dart';
@@ -23,9 +23,9 @@ class PleapleWidget extends StatelessWidget {
                     ? 0
                     : _homeController.listPersonagens.length,
                 itemBuilder: (BuildContext context, int index) {
-                  if (_homeController.listPersonagens != null) {
-                    return ListaPersonagensWidget(
-                        _homeController.listPersonagens[index]);
+                  if (_homeController.listPersonagens.isNotEmpty) {
+                    return DefaultCardWidget(
+                        item: _homeController.listPersonagens[index]);
                   }
                   return Center(
                     child: CircularProgressIndicator(

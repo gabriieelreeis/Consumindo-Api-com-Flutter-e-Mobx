@@ -1,7 +1,7 @@
-import 'package:app/controllers/home.dart';
-import 'package:app/widgets/home/favoritos.dart';
-import 'package:app/widgets/home/filmes.dart';
-import 'package:app/widgets/home/personagens.dart';
+import 'package:app/app/pages/home/controllers/home.dart';
+import 'package:app/app/pages/home/favoritos.dart';
+import 'package:app/app/pages/home/filmes.dart';
+import 'package:app/app/pages/home/personagens.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:fluttermoji/fluttermoji.dart';

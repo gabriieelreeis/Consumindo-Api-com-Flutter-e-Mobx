@@ -1,4 +1,4 @@
-import 'package:app/controllers/perfil.dart';
+import 'package:app/app/pages/perfil/controllers/perfil.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttermoji/fluttermoji.dart';
 import 'package:get_it/get_it.dart';

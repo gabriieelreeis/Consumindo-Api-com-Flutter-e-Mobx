@@ -17,14 +17,18 @@ class ApiUtil {
     return _listPersonagens;
   }
 
-  Future<List<dynamic>> importarFilmes() async {
+  Future<Map<String, dynamic>> importarFilmes() async {
+    late Map<String, dynamic> _listFilmes;
+
     final response = await http.get(Uri.parse('https://swapi.dev/api/films/'));
 
     if (response.statusCode == 200) {
-      final listFilmes = jsonDecode(response.body);
-      return listFilmes['results'];
+      final result = jsonDecode(response.body);
+      _listFilmes = result;
     } else {
       throw Exception('Erro ao carregar personagens');
     }
+
+    return _listFilmes;
   }
 }

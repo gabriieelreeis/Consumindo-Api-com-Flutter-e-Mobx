@@ -1,19 +1,20 @@
 // @dart=2.9
-import 'package:app/controllers/home.dart';
-import 'package:app/controllers/perfil.dart';
-import 'package:app/utils/db_helper.dart';
-import 'package:app/views/home.dart';
-import 'package:app/views/perfil.dart';
-import 'package:app/views/splash_screen.dart';
-import 'package:app/views/webview.dart';
+import 'package:app/app/components/app_configs.dart';
+
+import 'app/pages/home/controllers/home.dart';
+import 'app/pages/perfil/controllers/perfil.dart';
+import 'app/utils/db_helper.dart';
+import 'package:app/app/pages/home/home.dart';
+import 'package:app/app/pages/perfil/perfil.dart';
+import 'package:app/app/pages/splash_screen/splash_screen.dart';
+import 'app/pages/webview/webview.dart';
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 import 'package:global_configuration/global_configuration.dart';
-import 'components/app_configs.dart';
 
 void main() async {
-  WidgetsFlutterBinding
-      .ensureInitialized(); //permite carregar dados dados assincronos no main()
+  //permite carregar dados dados assincronos no main()
+  WidgetsFlutterBinding.ensureInitialized();
 
   GetIt getIt = GetIt.I;
   getIt.registerSingleton<HomeController>(HomeController());

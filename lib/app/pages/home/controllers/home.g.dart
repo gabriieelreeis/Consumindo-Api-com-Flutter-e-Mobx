@@ -58,13 +58,13 @@ mixin _$HomeController on _HomeControllerBase, Store {
       Atom(name: '_HomeControllerBase.listPersonagens');
 
   @override
-  List<dynamic> get listPersonagens {
+  List<ItemModel> get listPersonagens {
     _$listPersonagensAtom.reportRead();
     return super.listPersonagens;
   }
 
   @override
-  set listPersonagens(List<dynamic> value) {
+  set listPersonagens(List<ItemModel> value) {
     _$listPersonagensAtom.reportWrite(value, super.listPersonagens, () {
       super.listPersonagens = value;
     });
@@ -104,30 +104,30 @@ mixin _$HomeController on _HomeControllerBase, Store {
   final _$listFilmesAtom = Atom(name: '_HomeControllerBase.listFilmes');
 
   @override
-  List<dynamic> get listFilmes {
+  List<ItemModel> get listFilmes {
     _$listFilmesAtom.reportRead();
     return super.listFilmes;
   }
 
   @override
-  set listFilmes(List<dynamic> value) {
+  set listFilmes(List<ItemModel> value) {
     _$listFilmesAtom.reportWrite(value, super.listFilmes, () {
       super.listFilmes = value;
     });
   }
 
-  final _$databaseAtom = Atom(name: '_HomeControllerBase.database');
+  final _$listFavoritosAtom = Atom(name: '_HomeControllerBase.listFavoritos');
 
   @override
-  Future<Database> get database {
-    _$databaseAtom.reportRead();
-    return super.database;
+  List<ItemModel> get listFavoritos {
+    _$listFavoritosAtom.reportRead();
+    return super.listFavoritos;
   }
 
   @override
-  set database(Future<Database> value) {
-    _$databaseAtom.reportWrite(value, super.database, () {
-      super.database = value;
+  set listFavoritos(List<ItemModel> value) {
+    _$listFavoritosAtom.reportWrite(value, super.listFavoritos, () {
+      super.listFavoritos = value;
     });
   }
 
@@ -152,8 +152,33 @@ mixin _$HomeController on _HomeControllerBase, Store {
       AsyncAction('_HomeControllerBase.addFavorito');
 
   @override
-  Future addFavorito(String nome) {
-    return _$addFavoritoAsyncAction.run(() => super.addFavorito(nome));
+  Future addFavorito(ItemModel item) {
+    return _$addFavoritoAsyncAction.run(() => super.addFavorito(item));
+  }
+
+  final _$removeFavoritoAsyncAction =
+      AsyncAction('_HomeControllerBase.removeFavorito');
+
+  @override
+  Future removeFavorito(ItemModel item) {
+    return _$removeFavoritoAsyncAction.run(() => super.removeFavorito(item));
+  }
+
+  final _$limpaFavoritosAsyncAction =
+      AsyncAction('_HomeControllerBase.limpaFavoritos');
+
+  @override
+  Future limpaFavoritos() {
+    return _$limpaFavoritosAsyncAction.run(() => super.limpaFavoritos());
+  }
+
+  final _$checkFavoritoAsyncAction =
+      AsyncAction('_HomeControllerBase.checkFavorito');
+
+  @override
+  Future<bool> checkFavorito(String nome, String tipo) {
+    return _$checkFavoritoAsyncAction
+        .run(() => super.checkFavorito(nome, tipo));
   }
 
   final _$_HomeControllerBaseActionController =
@@ -180,7 +205,7 @@ listPersonagens: ${listPersonagens},
 pagePersonagens: ${pagePersonagens},
 apiLoading: ${apiLoading},
 listFilmes: ${listFilmes},
-database: ${database}
+listFavoritos: ${listFavoritos}
     ''';
   }
 }

@@ -1,10 +1,9 @@
-import 'package:app/controllers/home.dart';
-import 'package:app/views/home.dart';
+import 'package:app/app/pages/home/controllers/home.dart';
+import 'package:app/app/pages/home/home.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:get_it/get_it.dart';
 import 'package:global_configuration/global_configuration.dart';
-import 'package:sqflite/sqflite.dart';
 
 class SplashScreen extends StatefulWidget {
   @override

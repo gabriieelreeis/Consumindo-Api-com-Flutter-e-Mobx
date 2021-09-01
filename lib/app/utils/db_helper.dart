@@ -30,7 +30,6 @@ class DatabaseHelper {
     try {
       String path = join(
           await getDatabasesPath(), DatabaseHelperEnum.getValue(DATABASE.name));
-      await deleteDatabase(path);
       print('Banco de dados iniciado');
       return await openDatabase(path,
           version: DatabaseHelperEnum.getValue(DATABASE.version),
@@ -54,7 +53,6 @@ class DatabaseHelper {
     ];
 
     for (var i = 0; i < sql.length; i++) {
-      print("execute sql : " + sql[i]);
       await db.execute(sql[i]).catchError((onError) => print(onError));
     }
   }
