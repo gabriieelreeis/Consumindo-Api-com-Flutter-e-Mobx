@@ -1,6 +1,7 @@
 // @dart=2.9
 import 'package:app/controllers/home.dart';
 import 'package:app/controllers/perfil.dart';
+import 'package:app/utils/db_helper.dart';
 import 'package:app/views/home.dart';
 import 'package:app/views/perfil.dart';
 import 'package:app/views/splash_screen.dart';
@@ -11,11 +12,16 @@ import 'package:global_configuration/global_configuration.dart';
 import 'components/app_configs.dart';
 
 void main() async {
+  WidgetsFlutterBinding
+      .ensureInitialized(); //permite carregar dados dados assincronos no main()
+
   GetIt getIt = GetIt.I;
   getIt.registerSingleton<HomeController>(HomeController());
   getIt.registerSingleton<PerfilController>(PerfilController());
 
   GlobalConfiguration().loadFromMap(appConfigs);
+
+  await DatabaseHelper.instance.database;
 
   runApp(MyApp());
 }

@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:get_it/get_it.dart';
 import 'package:global_configuration/global_configuration.dart';
+import 'package:sqflite/sqflite.dart';
 
 class SplashScreen extends StatefulWidget {
   @override
@@ -16,7 +17,6 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     super.initState();
-
     _homeController.importaFilmes();
     _homeController.importaPersonagens();
   }
@@ -43,6 +43,10 @@ class _SplashScreenState extends State<SplashScreen> {
                   'assets/images/bb-8.gif',
                   width: 150,
                   fit: BoxFit.cover,
+                ),
+                SizedBox(height: 40),
+                CircularProgressIndicator(
+                  color: GlobalConfiguration().get('secondColor'),
                 ),
               ],
             ),

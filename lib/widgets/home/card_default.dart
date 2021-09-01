@@ -1,8 +1,12 @@
+import 'package:app/controllers/home.dart';
 import 'package:flutter/material.dart';
+import 'package:get_it/get_it.dart';
 import 'package:global_configuration/global_configuration.dart';
 
 class DefaultCardWidget extends StatelessWidget {
   DefaultCardWidget(this.nome);
+
+  final _homeController = GetIt.I.get<HomeController>();
 
   final String nome;
 
@@ -37,7 +41,7 @@ class DefaultCardWidget extends StatelessWidget {
               alignment: Alignment.centerRight,
               icon: const Icon(Icons.favorite_outline),
               color: Colors.red,
-              onPressed: () => {},
+              onPressed: () => _homeController.addFavorito(nome),
             )),
           ],
         ),

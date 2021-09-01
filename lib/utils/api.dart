@@ -2,25 +2,19 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 
 class ApiUtil {
-  Future<List<dynamic>> importarPersonagens() async {
-    List<dynamic> listPersonagens = [];
+  Future<Map<String, dynamic>> importarPersonagens(String url) async {
+    late Map<String, dynamic> _listPersonagens;
 
-    for (int i = 1; i <= 1000; i++) {
-      final response = await http
-          .get(Uri.parse('https://swapi.dev/api/people/?page=' + i.toString()));
+    final response = await http.get(Uri.parse(url));
 
-      if (response.statusCode == 200) {
-        final result = jsonDecode(response.body);
-        listPersonagens.add(result['results']);
-        if (result['next'] == null) {
-          break;
-        }
-      } else {
-        throw Exception('Erro ao carregar personagens');
-      }
+    if (response.statusCode == 200) {
+      final result = jsonDecode(response.body);
+      _listPersonagens = result;
+    } else {
+      throw Exception('Erro ao carregar personagens');
     }
 
-    return listPersonagens;
+    return _listPersonagens;
   }
 
   Future<List<dynamic>> importarFilmes() async {

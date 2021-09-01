@@ -3,6 +3,7 @@ import 'package:app/widgets/home/personagens_lista.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:get_it/get_it.dart';
+import 'package:global_configuration/global_configuration.dart';
 
 class PleapleWidget extends StatelessWidget {
   final _homeController = GetIt.I.get<HomeController>();
@@ -33,6 +34,32 @@ class PleapleWidget extends StatelessWidget {
                   );
                 },
               ),
+              if (_homeController.apiLoading)
+                CircularProgressIndicator(
+                  color: GlobalConfiguration().get('primaryColor'),
+                ),
+              if (_homeController.pagePersonagens != null &&
+                  !_homeController.apiLoading)
+                GestureDetector(
+                  onTap: _homeController.importaPersonagens,
+                  child: Container(
+                    decoration: BoxDecoration(
+                        color: GlobalConfiguration().get('primaryColor'),
+                        borderRadius: BorderRadius.circular(10)),
+                    margin: EdgeInsets.only(bottom: 20),
+                    child: Padding(
+                      padding:
+                          EdgeInsets.symmetric(vertical: 15, horizontal: 40),
+                      child: Text(
+                        'Ver Mais',
+                        style: TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
             ],
           ),
         ),
